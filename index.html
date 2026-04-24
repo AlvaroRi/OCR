@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCR y Análisis de Similitud</title>
+    <link rel="stylesheet" href="style.css">
+    <script src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>OCR y Análisis de Similitud</h1>
+        
+        <input type="file" id="imageInput" accept="image/*">
+        <button onclick="processImage()" id="processButton" disabled>Analizar Imagen</button>
+        
+        <div id="progressStatus">Esperando imagen...</div>
+
+        <div class="results-container">
+            <div class="section">
+                <h2>Texto Extraído (OCR)</h2>
+                <div id="ocrOutput" class="output-box">El texto de la imagen aparecerá aquí...</div>
+            </div>
+            
+            <div class="section">
+                <h2>Análisis de Comparación</h2>
+                <div class="input-group">
+                    <label for="titulo">Título (Texto de la Sección 1):</label>
+                    <textarea id="titulo" rows="3" placeholder="Pegue o edite el texto del Título aquí."></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="descripcion">Descripción (Texto de la Sección 2):</label>
+                    <textarea id="descripcion" rows="5" placeholder="Pegue o edite el texto de la Descripción aquí."></textarea>
+                </div>
+
+                <button onclick="compareTextWithAI()">Comparar Secciones</button>
+
+                
+                <div class="input-group">
+                    <label for="apiKey">Gemini API Key:</label>
+                    <input type="password" id="apiKey" placeholder="Pega tu API Key aquí">
+                </div>
+                <div class="explanation-box">
+                    <h3>Análisis de IA (Semántico):</h3>
+                    <span id="percentage"></span>
+                    <p id="aiResponse">Esperando análisis de la IA...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
